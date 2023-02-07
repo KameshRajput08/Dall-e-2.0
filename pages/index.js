@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import Card from "../components/Card";
 import { AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
+import Post from "../modals/post";
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
@@ -21,39 +22,13 @@ const RenderCards = ({ data, title }) => {
   );
 };
 
-export default function Home() {
+export default function Home({ posts }) {
   const [loading, setLoading] = useState(false);
-  const [allPosts, setAllPosts] = useState(null);
+  const [allPosts, setAllPosts] = useState(posts);
 
   const [searchText, setSearchText] = useState('');
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState(null);
-
-  const fetchPosts = async () => {
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/post', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setAllPosts(result.data.reverse());
-      }
-    } catch (err) {
-      alert(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
@@ -119,5 +94,15 @@ export default function Home() {
       </section>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const posts = await Post.find().lean()
+
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(posts))
+    }
+  }
 }
 
