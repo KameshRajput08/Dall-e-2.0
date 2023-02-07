@@ -1,3 +1,9 @@
+# DALL-E-2.0 
+## DEMO: [https://dall-e-2k.vercel.app/](https://dall-e-2k.vercel.app/)
+
+![Screenshot from 2023-02-08 01-29-32](https://user-images.githubusercontent.com/105886722/217354285-7c31d12d-5edd-45ea-9190-ec8d2ee999e4.png)
+![Screenshot from 2023-02-08 01-35-12](https://user-images.githubusercontent.com/105886722/217354348-de1c07a2-ee1d-4bbf-a08a-8fa5c2c4156b.png)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -32,3 +38,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Environment variables
+- CLOUDINARY_API_SECRET 
+- CLOUDINARY_API_KEY     
+- CLOUDINARY_CLOUD_NAME 
+- MONGO_URL      
+- OPENAI_API_KEY
